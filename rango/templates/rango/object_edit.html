@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Objects</title>{% endblock %}
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+{% block content %}
+    <h1>New object</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="submit" class="btn btn-outline">Save</button>
+            <a type="button" class="btn btn-outline" href = "/objects">Все объекты</a>
+        </div>
+    </form>
+{% endblock %}
+
+</body>
+</html>

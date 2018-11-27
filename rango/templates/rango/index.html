@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Local Library</title>{% endblock %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    {% block content %}
+    <div class="row" style = "margin-left: 10px">
+    <a class="btn btn-outline-primary col-md-2" href="/objects" role="button" style = "margin: 10px 10px 10px 10px">objects</a>
+    {%if is_up%}
+        <p class="text-success">Server is up</p>
+    {% else %}
+        <p class="text-danger">Server is down</p>
+    {%endif%}
+        <form method="get"> 
+            <input type="submit" value="START" name="mybtn" id="start_submit" class="btn btn-success col-md-2"/> 
+        </form> 
+        <p>{{a}}</p>
+    </div>
+    <table class = "table table-sm table-bordered" >
+        <thead>
+            <th scope="col">id</th>
+            <th scope="col">Type Of Message</th>
+            <th scope="col">IMEI</th>
+            <th scope="col">DATA</th>
+            <th scope="col">TIME</th>
+            <th scope="col">Serv Date Time</th>
+            <th scope="col">Lat</th>
+            <th scope="col">Lot</th>
+            <th scope="col">Speed</th>
+            <th scope="col">Course</th>
+            <th scope="col">Height</th>
+            <th scope="col">Sats</th>
+            <th scope="col">Hdops</th>
+            <th scope="col">Inputs</th>
+            <th scope="col">Outputs</th>
+            <th scope="col">ADC</th>
+            <th scope="col">iButton</th>
+            <th scope="col">Params</th>
+        </thead>
+        {% for data in Incoming_Data %}
+            <tr>
+            <td>{{data.id}}</td>    
+            <td>{{data.Type_of_Message}}</td>
+            <td>{{data.IMEI}}</td>
+            <td>{{data.data}}</td>
+            <td>{{data.time}}</td>
+            <td>{{data.server_date_time}}</td>
+            <td>{{data.lat}}</td>
+            <td>{{data.lot}}</td>
+            <td>{{data.speed}}</td>
+            <td>{{data.course}}</td>
+            <td>{{data.height}}</td>
+            <td>{{data.sats}}</td>
+            <td>{{data.hdops}}</td>
+            <td>{{data.inputs}}</td>
+            <td>{{data.outputs}}</td>
+            <td>{{data.adc}}</td>
+            <td>{{data.ibutton}}</td>
+            <td>{{data.params}}</td>
+        </tr>
+        {% endfor %}
+    {% endblock %}
+</body>
+</html>
